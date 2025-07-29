@@ -2,42 +2,55 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-
-  <!-- Para permitir que o layout se adapte ao ecrã do telemóvel -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Aplicação To‑Do • Flask + MySQL</title>
 
-  <!-- Ligamos o nosso ficheiro de estilos -->
+  <!-- Font Awesome para ícones -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <main class="container">
 
-    <!-- Título principal -->
-    <h1>Lista de Tarefas</h1>
+    <!-- Mensagem de motivação -->
+    <div id="motivacao-box" class="hide"></div>
 
-    <!-- Formulário para adicionar uma nova tarefa -->
+
+    <h1>Plano de treino diário</h1>
+
+    <!-- Formulário para adicionar nova tarefa -->
     <form id="todo-form">
-      <!-- Campo de texto onde o utilizador escreve a tarefa -->
+      <select id="todo-day">
+        <option value="Segunda-feira">Segunda-feira</option>
+        <option value="Terça-feira">Terça-feira</option>
+        <option value="Quarta-feira">Quarta-feira</option>
+        <option value="Quinta-feira">Quinta-feira</option>
+        <option value="Sexta-feira">Sexta-feira</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+      </select>
+
       <input
         id="todo-input"
         type="text"
-        placeholder="Escreve uma nova tarefa ..."
+        placeholder="Adiciona um novo plano de treino ..."
         autocomplete="off"
       />
-      <!-- Botão do formulário -->
+      
+
       <button type="submit">Adicionar</button>
     </form>
 
-    <!-- Lista (ul) onde as tarefas vão aparecer -->
+    <!-- Lista de tarefas -->
     <ul id="todo-list">
-      <!-- Os <li> são criados dinamicamente em JavaScript -->
+      <!-- As tarefas e notas serão inseridas dinamicamente -->
     </ul>
 
   </main>
 
-  <!-- Ligamos o nosso ficheiro JavaScript -->
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
+

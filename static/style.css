@@ -1,88 +1,239 @@
 /* ========== Estilos Globais ========== */
 
-/* Vamos usar uma fonte que funciona em todos os sistemas */
 body {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: #f5f5f5;     /* Cinzento muito claro */
-  margin: 0;                     /* Tira a margem default */
+  background: url('/static/imagens/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
 }
 
-/* Um contentor branco centrado na página */
+
 .container {
-  max-width: 600px;              /* Largura máxima */
-  margin: 3rem auto;             /* 3rem em cima/baixo, auto nas laterais */
-  background-color: #ffffff;     /* Fundo branco */
-  padding: 2rem;                 /* Espaçamento interno */
-  border-radius: 12px;           /* Cantos arredondados */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 600px;
+  margin: 3rem auto;
+  background-color: rgba(255, 255, 255, 0.95); /* <- transparente */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 /* ========== Título ========== */
-
 h1 {
-  margin-top: 0;                 /* Remove espaço extra em cima */
-  text-align: center;            /* Centraliza o texto */
+  margin-top: 0;
+  text-align: center;
 }
 
 /* ========== Formulário ========== */
-
 #todo-form {
-  display: flex;                 /* Coloca input e botão na mesma linha */
-  gap: 0.5rem;                   /* Espaço entre eles */
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
+
 
 #todo-form input {
-  flex: 1;                       /* Ocupa todo o espaço disponível */
+  flex: 1;
   padding: 0.5rem;
   font-size: 1rem;
+  line-height: 1.2;
   border: 1px solid #ccc;
   border-radius: 6px;
+  box-sizing: border-box;
 }
+
 
 #todo-form button {
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;              /* igual ao input */
   font-size: 1rem;
+  line-height: 1.2;
+  height: 100%;                      /* herda do input */
   border: none;
-  background-color: #0077cc;     /* Azul */
-  color: #fff;                   /* Texto branco */
+  background-color: #0077cc;
+  color: #fff;
   border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
+
 #todo-form button:hover {
-  background-color: #005fa3;     /* Azul um pouco mais escuro */
+  background-color: #005fa3;
 }
 
 /* ========== Lista de Tarefas ========== */
-
 #todo-list {
-  list-style: none;              /* Remove as bolinhas à esquerda */
-  padding: 0;
-  margin-top: 1.5rem;
+  list-style: none;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#todo-list section {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+#todo-list section h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 #todo-list li {
-  display: flex;                 /* Põe texto e botões em linha */
+  display: grid;
+  grid-template-columns: 1fr auto auto auto auto;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.5rem;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #eee; /* Linha cinzenta muito clara */
+  border-bottom: 1px solid #eee;
+}
+
+
+#todo-list li:last-child {
+  border-bottom: none;
+}
+
+#todo-list li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#todo-list li.done {
+  background-color: #e0f0e0;
 }
 
 #todo-list li.done span {
-  text-decoration: line-through; /* Risco no texto concluído */
-  color: #999;                   /* Cor cinzenta */
+  text-decoration: line-through;
+  color: #999;
 }
 
-/* Botões da lista (concluir ou apagar) */
+
+/* Texto da tarefa */
+#todo-list li span {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Botões das tarefas */
 #todo-list li button {
-  margin-left: 0.25rem;
-  border: none;
   background: none;
-  font-size: 1rem;
+  border: none;
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
   cursor: pointer;
+  transition: color 0.2s;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
 }
 
 #todo-list li button:hover {
-  color: #0077cc;                /* Azul quando passa o rato por cima */
+  color: #0077cc;
 }
+
+/* Organizar botões em linha */
+#todo-list li > button {
+  align-self: flex-start;
+}
+
+/* ========== Notas ========== */
+.note-list {
+  grid-column: 1 / -1; /* Faz a lista de notas ocupar a largura total */
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style-type: disc;
+}
+
+.note-list li {
+  margin-bottom: 0.2rem;
+}
+
+.note {
+  font-size: 0.95rem;
+  margin: 0.2rem 0;
+  color: #555;
+}
+
+/* ========== Responsivo ========== */
+@media (max-width: 480px) {
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  #todo-form {
+    flex-direction: column;
+  }
+
+  #todo-form input,
+  #todo-form button {
+    width: 100%;
+  }
+
+  #todo-list li {
+    padding: 0.75rem;
+  }
+}
+
+/* === Feedback de motivação === */
+#motivacao-box {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e0ffe0;
+  color: #2e7d32;
+  border: 1px solid #b2dfdb;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#motivacao-box.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#motivacao-box.hide {
+  opacity: 0;
+}
+
+#todo-day {
+  padding: 0.5rem 1rem;               /* igual ao botão */
+  font-size: 1rem;
+  line-height: 1.2;
+  height: 100%;                       /* como o botão */
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+#todo-day:hover {
+  background-color: #005fa3;
+}
+
+
