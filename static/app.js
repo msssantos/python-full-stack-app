@@ -24,6 +24,15 @@ function createTodoElement(todo) {
   span.textContent = todo.text;
   li.appendChild(span);
 
+  // ... Botões e notas (visto, nota, apagar, etc.)
+  // ... fetchNotes(todo.id, notesContainer);
+
+  // ANIMAÇÃO: Fade in ao inserir nova tarefa
+  li.style.opacity = 0;
+  li.style.transition = "opacity 0.3s";
+  setTimeout(() => (li.style.opacity = 1), 0);
+
+
   // Botão para alternar estado
   const toggleButton = document.createElement("button");
   toggleButton.textContent = todo.done ? "↺" : "✓";

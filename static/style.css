@@ -7,6 +7,14 @@ body {
   margin: 0;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
 
 .container {
   max-width: 600px;
@@ -72,6 +80,7 @@ h1 {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 #todo-list section {
@@ -103,7 +112,8 @@ h1 {
 }
 
 #todo-list li:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #todo-list li.done {
@@ -129,7 +139,8 @@ h1 {
   font-size: 1.1rem;
   margin-right: 0.3rem;
   cursor: pointer;
-  transition: color 0.2s;
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
   width: 2rem;
   height: 2rem;
   display: grid;
