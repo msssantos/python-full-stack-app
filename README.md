@@ -127,7 +127,7 @@ flask run
 
 ## 📷 Capturas de ecrã
 
-![exemplo](static/imagens/background.jpg)
+![exemplo](static/imagens/final.png)
 
 ---
 
